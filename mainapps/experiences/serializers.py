@@ -75,7 +75,7 @@ class ExperienceListSerializer(serializers.ModelSerializer):
         model = Experience
         fields = [
             'id', 'title', 'slug', 'short_description', 'experience_type',
-            'category_name', 'city', 'state', 'duration', 'base_price',
+            'category_name', 'duration', 'base_price',
             'currency', 'average_rating', 'total_reviews', 'primary_image',
             'next_session', 'is_featured', 'difficulty_level'
         ]
@@ -113,7 +113,6 @@ class ExperienceDetailSerializer(serializers.ModelSerializer):
         fields = [
             'id', 'title', 'slug', 'description', 'short_description',
             'experience_type', 'category', 'venue_name', 'address',
-            'city', 'state', 'country', 'postal_code', 'latitude', 'longitude',
             'duration', 'min_participants', 'max_participants', 'age_restriction',
             'difficulty_level', 'base_price', 'currency', 'includes', 'excludes',
             'requirements', 'cancellation_policy', 'refund_policy',

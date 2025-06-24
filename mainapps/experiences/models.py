@@ -12,7 +12,6 @@ from decimal import Decimal
 from mptt.models import MPTTModel
 
 class Address(models.Model):
-
     
     country = models.CharField(
         max_length=255,
@@ -210,7 +209,7 @@ class Experience(ProfileMixin):
     
     # Pricing
     base_price = models.DecimalField(max_digits=10, decimal_places=2)
-    currency = models.CharField(max_length=3, default='NGN')
+    currency = models.CharField(max_length=3, null=True, blank=True)
     
     # What's included/excluded
     includes = models.TextField(blank=True, help_text="What's included in the experience")
@@ -438,7 +437,7 @@ class ExperienceBooking(ProfileMixin):
         
         prefix = "EXP"
         suffix = ''.join(random.choices(string.ascii_uppercase + string.digits, k=8))
-        return f"{prefix}{suffix}"
+        return f"{prefix}-{self.profile_id}-{suffix}"
 
 
 class ParticipantDetail(models.Model):
@@ -459,7 +458,7 @@ class ParticipantDetail(models.Model):
     gender = models.CharField(
         max_length=10,
         choices=[('male', 'Male'), ('female', 'Female'), ('other', 'Other')],
-        blank=True
+        blank=True,
     )
     
     # Emergency contact
